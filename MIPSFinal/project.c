@@ -292,15 +292,19 @@ int ALU_operations(unsigned data1, unsigned data2, unsigned extended_value, unsi
 	if (ALUSrc) data2 = extended_value;
 	//Changes ALUOp depending on the function code if OP code is an R-type
 	if (ALUOp == 7) {
-		if (funct == 32) ALUOp = 0; //Add
-		if (funct == 34) ALUOp = 1; //Sub
-		if (funct == 42) ALUOp = 2; //Sls
-		if (funct == 43) ALUOp = 3; //Slu
-		if (funct == 36) ALUOp = 4; //And
-		if (funct == 37) ALUOp = 5; //Or
-		if (funct == 6) ALUOp = 6; //Sle16
-		if (funct == 39) ALUOp = 7; //Nor
-		else return 1;
+			 if (funct == 32) ALUOp = 0; //Add
+		else if (funct == 34) ALUOp = 1; //Sub
+		else if (funct == 42) ALUOp = 2; //Sls
+		else if (funct == 43) ALUOp = 3; //Slu
+		else if (funct == 36) ALUOp = 4; //And
+		else if (funct == 37) ALUOp = 5; //Or
+		else if (funct == 6) ALUOp = 6; //Sle16
+		else if (funct == 39) ALUOp = 7; //Nor
+		else {
+			printf("prob1 %u", funct);
+			return 1;
+
+		}
 	}
 	//Run ALU command once ALUOp has been corrected if needed
 	ALU(data1, data2, ALUOp, ALUresult, Zero);
@@ -311,36 +315,10 @@ int ALU_operations(unsigned data1, unsigned data2, unsigned extended_value, unsi
 /* 10 Points */
 int rw_memory(unsigned ALUresult, unsigned data2, char MemWrite, char MemRead, unsigned *memdata, unsigned *Mem)
 {
-
-	//if (!(ALUresult % 4) && (MemRead || MemWrite)) return 1;				//Halt if address is not bbyte addressed 
-	//if (MemRead) *memdata = Mem[ALUresult >> 2];	//Read from memory if MemRead, shift is to make ALUresult byte addressed
-	//if (MemWrite) Mem[ALUresult >> 2] = data2;		//Write to memory if MemWrite from data2
-	//return 0;
-
-	//if reading from memory
-	if (MemRead == 1) {
-		if ((ALUresult % 4) == 0) {
-			*memdata = Mem[ALUresult >> 2];
-		}
-
-		//Improper Address Halt
-		else {
-			return 1;
-		}
-
-	}
-
-	//If writting to memory
-	if (MemWrite == 1) {
-		if ((ALUresult % 4) == 0) {
-			Mem[ALUresult >> 2] = data2;
-		}
-		//Improper Address Halt
-		else {
-			return 1;
-		}
-	}
-
+	//printf("MemRead: %u MemWrite: %u ALUresult: %u\n", MemRead, MemWrite, ALUresult);
+	if ((ALUresult % 4!=0) && (MemRead || MemWrite)) return 1;//Halt if address is not bbyte addressed 
+	if (MemRead) *memdata = Mem[ALUresult >> 2];	//Read from memory if MemRead, shift is to make ALUresult byte addressed
+	if (MemWrite) Mem[ALUresult >> 2] = data2;		//Write to memory if MemWrite from data2
 	return 0;
 
 }
