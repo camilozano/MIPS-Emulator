@@ -111,6 +111,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="project.c" />
+    <ClCompile Include="spimcore.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="input_file2.h" />
+    <ClInclude Include="spimcore.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="input_file.asc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
