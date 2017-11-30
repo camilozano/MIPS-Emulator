@@ -301,11 +301,7 @@ int ALU_operations(unsigned data1, unsigned data2, unsigned extended_value, unsi
 		else if (funct == 37) ALUOp = 5; //Or
 		else if (funct ==  6) ALUOp = 6; //Sle16
 		else if (funct == 39) ALUOp = 7; //Nor
-		else {
-			printf("prob1 %u", funct);
-			return 1;
-
-		}
+		else return 1;
 	}
 	//Run ALU command once ALUOp has been corrected if needed
 	ALU(data1, data2, ALUOp, ALUresult, Zero);
