@@ -274,8 +274,8 @@ void read_register(unsigned r1, unsigned r2, unsigned *Reg, unsigned *data1, uns
 
 
 /* Sign Extend */
-/* Written by Michael Andacht */
 /* 10 Points */
+/* Camilo 3794895*/
 void sign_extend(unsigned offset, unsigned *extended_value)
 {
 	//Grabs the first digit of the the 16 bit num to check for sign
@@ -286,6 +286,7 @@ void sign_extend(unsigned offset, unsigned *extended_value)
 
 /* ALU operations */
 /* 10 Points */
+/* Camilo 3794895*/
 int ALU_operations(unsigned data1, unsigned data2, unsigned extended_value, unsigned funct, char ALUOp, char ALUSrc, unsigned *ALUresult, char *Zero)
 {
 	//ALUSrc multiplexor selects the extended value if it is one
@@ -298,7 +299,7 @@ int ALU_operations(unsigned data1, unsigned data2, unsigned extended_value, unsi
 		else if (funct == 43) ALUOp = 3; //Slu
 		else if (funct == 36) ALUOp = 4; //And
 		else if (funct == 37) ALUOp = 5; //Or
-		else if (funct == 6) ALUOp = 6; //Sle16
+		else if (funct ==  6) ALUOp = 6; //Sle16
 		else if (funct == 39) ALUOp = 7; //Nor
 		else {
 			printf("prob1 %u", funct);
@@ -313,6 +314,7 @@ int ALU_operations(unsigned data1, unsigned data2, unsigned extended_value, unsi
 
 /* Read / Write Memory */
 /* 10 Points */
+/* Camilo 3794895*/
 int rw_memory(unsigned ALUresult, unsigned data2, char MemWrite, char MemRead, unsigned *memdata, unsigned *Mem)
 {
 	//printf("MemRead: %u MemWrite: %u ALUresult: %u\n", MemRead, MemWrite, ALUresult);
@@ -326,6 +328,7 @@ int rw_memory(unsigned ALUresult, unsigned data2, char MemWrite, char MemRead, u
 
 /* Write Register */
 /* 10 Points */
+/* Camilo 3794895*/
 void write_register(unsigned r2, unsigned r3, unsigned memdata, unsigned ALUresult, char RegWrite, char RegDst, char MemtoReg, unsigned *Reg)
 {
 	unsigned *RegAns = RegDst ? &Reg[r3] : &Reg[r2];		//Multiplexor RegDst chooses which register to write to
