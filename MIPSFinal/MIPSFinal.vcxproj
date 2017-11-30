@@ -75,6 +75,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -115,10 +116,12 @@
     <ClCompile Include="spimcore.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="input_file2.h" />
+    <ClInclude Include="input_file2.asc" />
     <ClInclude Include="spimcore.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="E:\Downloads\FAQ.doc" />
+    <None Include="E:\Downloads\ProjectGuideline.doc" />
     <None Include="input_file.asc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

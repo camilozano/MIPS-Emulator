@@ -26,11 +26,15 @@
     <ClInclude Include="spimcore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="input_file2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClInclude Include="input_file2.asc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="input_file.asc" />
+    <None Include="E:\Downloads\ProjectGuideline.doc">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="E:\Downloads\FAQ.doc">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
